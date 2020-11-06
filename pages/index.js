@@ -18,6 +18,7 @@ export default function Home() {
       <Head>
         <title>Nander</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="Description" content="homepage of Nander."></meta>
       </Head>
 
       <main className={styles.main}>
