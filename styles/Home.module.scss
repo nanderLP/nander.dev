@@ -7,14 +7,19 @@
   color: var(--foreground);
 }
 
-.left {
+.ghTitle {
+  margin: 0; // there is a margin for some reason
+}
+
+.side {
   float: left;
   padding: 1rem;
 }
 
-.right {
-  float: left;
-  padding: 1rem;
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .title a {
