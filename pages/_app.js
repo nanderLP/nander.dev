@@ -3,7 +3,7 @@ import { ThemeProvider } from "next-themes";
 
 function Nander({ Component, pageProps }) {
   return (
-    <ThemeProvider>
+    <ThemeProvider defaultTheme="system">
       <Component {...pageProps} />
     </ThemeProvider>
   );
