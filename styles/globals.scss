@@ -1,0 +1,18 @@
+@import "./theme.scss";
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline var(--primary) 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
