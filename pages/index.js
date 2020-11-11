@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import useSWR from "swr";
+import Picture from "../components/Github/Picture";
 import Profile from "../components/Github/Profile";
 import styles from "../styles/Home.module.scss";
 
@@ -24,14 +25,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.side}>
-          <div>
-            <Image
-              src="https://github.com/nanderLP.png"
-              alt="GitHub Profile Picture"
-              width="200px"
-              height="200px"
-            />
-          </div>
+          <Picture/>
           <div>
             <p>I'm Nander</p>
             <p>I like to code</p>

@@ -1,0 +1,185 @@
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  min-width: 200px;
+  transition: all 0.5s ease;
+}
+
+// Cat
+.cat {
+  position: relative;
+  height: 50px;
+  width: 50px * 1.13;
+}
+
+.container:hover {
+  transform: translateY(-40px);
+}
+
+// Ears
+.ear {
+  position: absolute;
+  top: -30%;
+  height: 60%;
+  width: 25%;
+  background: var(--cat-color);
+
+  &::after {
+    transform-origin: 50% 100%;
+  }
+}
+
+.earLeft {
+  left: -7%;
+  border-radius: 70% 30% 0% 0% / 100% 100% 0% 0%;
+  transform: rotate(-15deg);
+
+  &::before,
+  &::after {
+    right: 10%;
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.earRight {
+  right: -7%;
+  border-radius: 30% 70% 0% 0% / 100% 100% 0% 0%;
+  transform: rotate(15deg);
+
+  &::before,
+  &::after {
+    left: 10%;
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+}
+
+// Face
+.face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: var(--background);
+  border-radius: 50%;
+}
+
+// Eyes
+.eye {
+  position: absolute;
+  top: 35%;
+  height: 30%;
+  width: 31%;
+  background: var(--cat-color);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+
+  // Eyelids
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    border-radius: 0 0 50% 50% / 0 0 40% 40%;
+    background: var(--background);
+    animation: blink 4s infinite ease-in;
+  }
+
+  @keyframes blink {
+    0% {
+      height: 0;
+    }
+    90% {
+      height: 0;
+    }
+    92.5% {
+      height: 100%;
+    }
+    95% {
+      height: 0;
+    }
+    97.5% {
+      height: 100%;
+    }
+    100% {
+      height: 0;
+    }
+  }
+}
+
+.eyeLeft {
+  left: 0;
+
+  &::before {
+    right: -5%;
+  }
+}
+
+.eyeRight {
+  right: 0;
+
+  &::before {
+    left: -5%;
+  }
+}
+
+// Pupils
+.eyePupil {
+  position: absolute;
+  top: 25%;
+  height: 50%;
+  width: 20%;
+  background: var(--background);
+  border-radius: 50%;
+  animation: look-around 4s infinite;
+
+  @keyframes look-around {
+    0% {
+      transform: translate(0);
+    }
+    5% {
+      transform: translate(50%, -25%);
+    }
+    10% {
+      transform: translate(50%, -25%);
+    }
+    15% {
+      transform: translate(-100%, -25%);
+    }
+    20% {
+      transform: translate(-100%, -25%);
+    }
+    25% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  .eyeLeft & {
+    right: 30%;
+  }
+
+  .eyeRight & {
+    left: 30%;
+  }
+}
+
+// Muzzle
+.muzzle {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  height: 6%;
+  width: 10%;
+  background: var(--cat-color);
+  transform: translateX(-50%);
+  border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+}
