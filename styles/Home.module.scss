@@ -1,8 +1,5 @@
 .container {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: var(--background);
   color: var(--foreground);
 }
@@ -17,6 +14,14 @@
 }
 
 .main {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
