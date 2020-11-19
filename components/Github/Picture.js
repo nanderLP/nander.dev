@@ -11,6 +11,7 @@ export default function Picture() {
         alt="GitHub Profile Picture"
         width="200px"
         height="200px"
+        priority="true"
       />
     </div>
   );

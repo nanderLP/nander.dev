@@ -23,7 +23,7 @@ export default function Home() {
         <meta name="Description" content="homepage of nander."></meta>
       </Head>
 
-      <Navbar />
+      {/*<Navbar /> TODO:*/}
 
       <main className={styles.main}>
         <div className={styles.center}>
@@ -33,7 +33,7 @@ export default function Home() {
               <p>I'm Nander</p>
               <p>I like to code</p>
               <p>
-                I like the color{" "}
+                I like the color
                 <span style={{ color: "var(--primary)" }}>indigo</span>
               </p>
             </div>

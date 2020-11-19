@@ -1,11 +1,8 @@
 import styles from "../../styles/Navbar.module.scss";
 import NavbarItem from "./NavBarItem";
-
-import { useState, useEffect } from "react";
-
 import { useTheme } from "next-themes";
 
-import { Music, Moon, Sun, Terminal, Info, Mail } from "react-feather";
+import { Music, Moon, Sun, Info, Mail } from "react-feather";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -20,8 +17,15 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <div>
-        <button onClick={toggleTheme} style={{background: "none"}}>
-          {theme == "dark" ? <Moon size="2rem" /> : <Sun size="2rem" />}
+        <button
+          onClick={toggleTheme}
+          style={{ background: "none", border: "none", cursor: "pointer" }}
+        >
+          {theme == "dark" ? (
+            <Moon size="2rem" />
+          ) : (
+            <Sun size="2rem" />
+          )}
         </button>
       </div>
       <NavbarItem route="/music">
