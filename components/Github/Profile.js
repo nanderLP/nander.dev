@@ -2,8 +2,6 @@ import styles from "../../styles/Profile.module.scss";
 
 export default function Profile(props) {
   const { data } = props;
-  console.log(data);
-
   return (
     <div className={styles.profile}>
       <div className={styles.data}>

@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
+import Navbar from "../components/Navbar/";
 import useSWR from "swr";
+import Picture from "../components/Github/Picture";
 import Profile from "../components/Github/Profile";
 import styles from "../styles/Home.module.scss";
 
@@ -19,35 +20,33 @@ export default function Home() {
       <Head>
         <title>Nander</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="Description" content="homepage of Nander."></meta>
+        <meta name="Description" content="homepage of nander."></meta>
       </Head>
 
+      {/*<Navbar /> TODO:*/}
+
       <main className={styles.main}>
-        <div className={styles.side}>
-          <div>
-            <Image
-              src="https://github.com/nanderLP.png"
-              alt="GitHub Profile Picture"
-              width="200px"
-              height="200px"
-            />
-          </div>
-          <div>
-            <p>I'm Nander</p>
-            <p>I like to code</p>
-            <p>
-              I like the color <span style={{ color: "var(--primary)" }}>indigo</span>
-            </p>
-          </div>
-        </div>
-        {data ? (
+        <div className={styles.center}>
           <div className={styles.side}>
-            <a href={data.html_url} target="_blank" rel="noreferrer">
-              <h2 className={styles.ghTitle}>My GitHub Profile</h2>
-            </a>
-            <Profile data={data} />
+            <Picture />
+            <div>
+              <p>I'm Nander</p>
+              <p>I like to code</p>
+              <p>
+                I like the color
+                <span style={{ color: "var(--primary)" }}>indigo</span>
+              </p>
+            </div>
           </div>
-        ) : null}
+          {data ? (
+            <div className={styles.side}>
+              <a href={data.html_url} target="_blank" rel="noreferrer">
+                <h2 className={styles.ghTitle}>My GitHub Profile</h2>
+              </a>
+              <Profile data={data} />
+            </div>
+          ) : null}
+        </div>
       </main>
     </div>
   );

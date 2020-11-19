@@ -1,11 +1,13 @@
 :root {
   /* Your default theme */
   --background: white;
-  --foreground: black;
+  --foreground: #202124;
   --primary: #5169ea;
+  --cat-color: #121212;
 }
 
 [data-theme="dark"] {
   --background: black;
   --foreground: white;
+  --cat-color: white;
 }

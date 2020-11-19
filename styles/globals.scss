@@ -1,5 +1,4 @@
 @import "./theme.scss";
-@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
 html,
 body {
   padding: 0;
@@ -15,4 +14,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+svg {
+  color: var(--foreground);
 }
