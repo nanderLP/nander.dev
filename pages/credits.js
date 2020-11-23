@@ -1,3 +1,3 @@
 export default function Credits() {
-    return <div>WIP</div>
+  return <div>WIP</div>;
 }

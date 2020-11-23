@@ -25,11 +25,11 @@ export default function Navbar() {
         </div>
       </div>
       <div className={styles.navItem}>
-      <Link href="/music">
-        <a>
-          <Music size="2rem" />
-        </a>
-      </Link>
+        <Link href="/music">
+          <a>
+            <Music size="2rem" />
+          </a>
+        </Link>
       </div>
       <div className={styles.navItem}>
         <a href="mailto:nander@nander.dev">
@@ -37,11 +37,11 @@ export default function Navbar() {
         </a>
       </div>
       <div className={styles.navItem}>
-      <Link href="/music">
-        <a>
-          <Music size="2rem" />
-        </a>
-      </Link>
+        <Link href="/music">
+          <a>
+            <Music size="2rem" />
+          </a>
+        </Link>
       </div>
     </nav>
   );
