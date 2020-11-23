@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar/";
 import useSWR from "swr";
 import Picture from "../components/Github/Picture";
 import Profile from "../components/Github/Profile";
@@ -16,7 +15,7 @@ export default function Home() {
       })
   );
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Nander</title>
         <link rel="icon" href="/favicon.ico" />
