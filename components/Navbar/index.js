@@ -1,4 +1,4 @@
-import styles from "../../styles/Navbar.module.scss";
+import styles from "./Navbar.module.scss";
 import NavbarItem from "./NavBarItem";
 import { useTheme } from "next-themes";
 

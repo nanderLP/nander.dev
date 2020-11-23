@@ -22,9 +22,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="Description" content="homepage of nander."></meta>
       </Head>
-
-      {/*<Navbar /> TODO:*/}
-
       <main className={styles.main}>
         <div className={styles.center}>
           <div className={styles.side}>
@@ -33,7 +30,7 @@ export default function Home() {
               <p>I'm Nander</p>
               <p>I like to code</p>
               <p>
-                I like the color
+                I like the color{" "}
                 <span style={{ color: "var(--primary)" }}>indigo</span>
               </p>
             </div>
