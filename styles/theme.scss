@@ -4,10 +4,18 @@
   --foreground: #202124;
   --primary: #5169ea;
   --cat-color: #121212;
+
+  // most of this stuff is inspired by paco coursey, go check him out! https://paco.sh
+  --gap-quarter: 0.25rem;
+  --gap-half: 0.5rem;
+  --gap: 1rem;
+  --gap-double: 2rem;
+  --small-gap: 4rem;
+  --big-gap: 4rem;
 }
 
 [data-theme="dark"] {
-  --background: black;
+  --background: #131415;
   --foreground: white;
   --cat-color: white;
 }

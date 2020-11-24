@@ -1,4 +1,4 @@
-import styles from "../styles/Cat.module.scss";
+import styles from "./Cat.module.scss";
 
 export default function Cat() {
   return (

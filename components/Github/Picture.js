@@ -1,6 +1,5 @@
-import Cat from "../Cat";
+import Cat from "../Cat/Cat";
 import Image from "next/image";
-import styles from "../../styles/Picture.module.scss";
 
 export default function Picture() {
   return (
