@@ -2,7 +2,7 @@ import styles from "./Navbar.module.scss";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
-import { Music, Moon, Sun, Info, Mail, Home, GitHub } from "react-feather";
+import { Moon, Sun, Info, Mail, Home, GitHub } from "react-feather";
 
 export default function Navbar(props) {
   const { path } = props;
@@ -38,12 +38,18 @@ export default function Navbar(props) {
             href="https://github.com/nanderLP"
             target="_blank"
             rel="noreferrer"
+            className={styles.a}
           >
             <GitHub size="2rem" />
           </a>
         </div>
         <div className={styles.navItem}>
-          <a href="mailto:nander@nander.dev" className={styles.a}>
+          <a
+            href="mailto:nander@nander.dev"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.a}
+          >
             <Mail size="2rem" />
           </a>
         </div>
