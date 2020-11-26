@@ -1,16 +1,17 @@
 .nav {
   z-index: 10;
-  padding: var(--gap-double);
-  @media (max-width: 960px) {
-    padding: var(--gap);
-  }
-  margin-bottom: 2rem;
+  padding: var(--gap);
   top: 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: sticky;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: row;
 }
 
 .navItem {

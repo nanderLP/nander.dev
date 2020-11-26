@@ -1,3 +1,5 @@
+import styles from "@styles/Music.module.scss";
+
 export default function Music() {
-  return <div>WIP</div>;
+  return <main className={styles.container}></main>;
 }
