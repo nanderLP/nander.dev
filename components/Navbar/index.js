@@ -5,8 +5,6 @@ import Link from "next/link";
 import { Moon, Sun, Info, Mail, Home, GitHub } from "react-feather";
 
 export default function Navbar(props) {
-  const { path } = props;
-
   const { theme, setTheme } = useTheme();
   function toggleTheme() {
     if (theme == "dark") {
@@ -26,13 +24,6 @@ export default function Navbar(props) {
             </a>
           </Link>
         </div>
-        {/*<div className={styles.navItem}>
-          <Link href="/music">
-            <a className={styles.a}>
-              <Music size="2rem" />
-            </a>
-          </Link>
-          </div>*/}
         <div className={styles.navItem}>
           <a
             href="https://github.com/nanderLP"
