@@ -21,7 +21,7 @@ export default function Navbar(props) {
       <div className={styles.navItems}>
         <div className={styles.navItem}>
           <Link href="/">
-            <a className={styles.a}>
+            <a className={styles.a} aria-label="home">
               <Home size="2rem" />
             </a>
           </Link>
@@ -39,6 +39,7 @@ export default function Navbar(props) {
             target="_blank"
             rel="noreferrer"
             className={styles.a}
+            aria-label="github"
           >
             <GitHub size="2rem" />
           </a>
@@ -49,6 +50,7 @@ export default function Navbar(props) {
             target="_blank"
             rel="noreferrer"
             className={styles.a}
+            aria-label="mail"
           >
             <Mail size="2rem" />
           </a>
@@ -63,7 +65,7 @@ export default function Navbar(props) {
         </div>
         <div className={styles.navItem}>
           <Link href="/credits">
-            <a className={styles.a}>
+            <a className={styles.a} aria-label="credits">
               <Info size="2rem" />
             </a>
           </Link>
