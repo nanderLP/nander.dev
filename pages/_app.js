@@ -8,6 +8,8 @@ import Navbar from "components/Navbar";
 // import { useEffect, useState } from "react";
 
 function Nander({ Component, pageProps }) {
+  // TODO: variable favicon selection based on theme
+
   /* const { theme } = useTheme();
 
   useEffect(() => {
@@ -15,7 +17,7 @@ function Nander({ Component, pageProps }) {
     document
       .getElementById("favicon")
       .setAttribute("href", `/favicon_${theme}.ico`);
-  }); */ // TODO: variable favicon selection based on theme
+  }); */
 
   return (
     <ThemeProvider defaultTheme="system">
@@ -26,7 +28,7 @@ function Nander({ Component, pageProps }) {
         <meta name="Description" content="homepage of nander."></meta>
       </Head>
       <div className={styles.app}>
-        <Navbar />
+        <Navbar path={Component.name} />
         <Component {...pageProps}></Component>
       </div>
     </ThemeProvider>

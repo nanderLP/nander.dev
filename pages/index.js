@@ -15,28 +15,26 @@ export default function Home() {
       })
   );
   return (
-    <div>
-      <main className={styles.main}>
-        <div className={styles.side}>
-          <Picture />
-          <div>
-            <p>I'm Nander</p>
-            <p>I like to code</p>
-            <p>
-              I like the color{" "}
-              <span style={{ color: "var(--primary)" }}>indigo</span>
-            </p>
-          </div>
+    <main className={styles.container}>
+      <div className={styles.side}>
+        <Picture />
+        <div>
+          <p>I'm Nander</p>
+          <p>I like to code</p>
+          <p>
+            I like the color{" "}
+            <span style={{ color: "var(--primary)" }}>indigo</span>
+          </p>
         </div>
-        {data ? (
-          <div className={styles.side}>
-            <a href={data.html_url} target="_blank" rel="noreferrer">
-              <h2 className={styles.ghTitle}>My GitHub Profile</h2>
-            </a>
-            <Profile data={data} />
-          </div>
-        ) : null}
-      </main>
-    </div>
+      </div>
+      {data ? (
+        <div className={styles.side}>
+          <a href={data.html_url} target="_blank" rel="noreferrer">
+            <h2 className={styles.ghTitle}>My GitHub Profile</h2>
+          </a>
+          <Profile data={data} />
+        </div>
+      ) : null}
+    </main>
   );
 }
