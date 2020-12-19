@@ -6,3 +6,10 @@
   float: left;
   padding: 1rem;
 }
+
+.container {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
