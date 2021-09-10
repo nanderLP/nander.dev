@@ -19,7 +19,7 @@
 		--bg: #fff;
 		--fg: #000;
 		@media (prefers-color-scheme: dark) {
-			--bg: #121212;
+			--bg: #131415; // i love this color
 			--fg: #fff;
 		}
 	}
