@@ -1,5 +1,6 @@
 {
 	"name": "nander",
+	"license": "MIT",
 	"version": "1.0.0",
 	"scripts": {
 		"dev": "svelte-kit dev",
@@ -22,7 +23,6 @@
 		"prettier-plugin-svelte": "^2.2.0",
 		"svelte": "^3.34.0",
 		"svelte-check": "^2.0.0",
-		"svelte-feather-icons": "^3.5.0",
 		"svelte-preprocess": "^4.0.0",
 		"tslib": "^2.0.0",
 		"typescript": "^4.0.0"
