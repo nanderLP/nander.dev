@@ -65,9 +65,15 @@
 		width: 150px;
 		height: 1rem;
 		border-radius: 5px;
-		background-image: linear-gradient(270deg, #111, #333, #333, #111);
+		background-image: linear-gradient(270deg, #fafafa, #eaeaea, #eaeaea, #fafafa);
+		@media (prefers-color-scheme: dark) {
+			background-image: linear-gradient(270deg, #111, #333, #333, #111);
+		}
 		background-size: 400% 100%;
 		animation: loading 8s ease-in-out infinite;
+		@media (prefers-reduced-motion) {
+			animation: none;
+		}
 	}
 
 	@keyframes loading {

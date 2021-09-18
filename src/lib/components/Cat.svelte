@@ -206,6 +206,9 @@
 
 		&:hover {
 			transform: translateY(-40px);
+			@media (prefers-reduced-motion) {
+				transform: none;
+			}
 		}
 
 		// Cat
@@ -373,7 +376,7 @@
 		}
 	}
 
-    // im too stupid to fix this so this will just stay here :-)
+	// im too stupid to fix this so this will just stay here :-)
 	.eye-pupil {
 		.eye-left & {
 			right: 30%;

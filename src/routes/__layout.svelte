@@ -20,11 +20,12 @@
 	}
 
 	:root {
-		--primary: #5872fe;
+		--primary: #3d4fb1;
 		--bg: #fff;
 		--fg: #000;
 		--cat-color: #121212;
 		@media (prefers-color-scheme: dark) {
+			--primary: #5872fe;
 			--bg: #131415; // i love this color
 			--fg: #fff;
 			--cat-color: #fff;
