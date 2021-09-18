@@ -2,6 +2,10 @@
 	import Header from '$lib/components/Header.svelte';
 </script>
 
+<svelte:head>
+	<title>Nander</title>
+</svelte:head>
+
 <div>
 	<Header />
 	<slot />
@@ -16,11 +20,14 @@
 	}
 
 	:root {
+		--primary: #5872fe;
 		--bg: #fff;
 		--fg: #000;
+		--cat-color: #121212;
 		@media (prefers-color-scheme: dark) {
 			--bg: #131415; // i love this color
 			--fg: #fff;
+			--cat-color: #fff;
 		}
 	}
 

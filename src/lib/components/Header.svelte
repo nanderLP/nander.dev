@@ -14,8 +14,7 @@
 
 <style lang="scss">
 	nav {
-		position: sticky;
-		max-width: 100%;
+		display: flex;
 		padding: 1rem;
 	}
 
