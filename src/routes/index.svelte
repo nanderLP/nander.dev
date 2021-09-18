@@ -1,3 +1,14 @@
+<script context="module">
+	/**
+	 * @type {import('@sveltejs/kit').Load}
+	 */
+	export async function load() {
+		return {
+			maxage: 3600
+		};
+	}
+</script>
+
 <script>
 	import Cat from '$lib/components/Cat.svelte';
 	import ProfilePicture from '$lib/owo.webp';
@@ -10,7 +21,7 @@
 </svelte:head>
 
 <main>
-	<div class="left">
+	<div>
 		<Cat />
 		<!-- svelte-ignore a11y-img-redundant-alt -->
 		<img src={ProfilePicture} width="200" height="200" alt="Profile Picture" />
@@ -20,7 +31,7 @@
 			<p>I like the color <span>indigo</span></p>
 		</div>
 	</div>
-	<div class="right">
+	<div>
 		<a href="https://github.com/nanderLP"><h2 class="gh">My GitHub Profile</h2></a>
 		{#await res}
 			<p />
