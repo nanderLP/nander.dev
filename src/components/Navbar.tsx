@@ -1,6 +1,6 @@
-import { motion, TargetAndTransition } from "framer-motion";
+import { AnimatePresence, motion, TargetAndTransition } from "framer-motion";
 import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { BoxProps } from "../types/Box";
 import Box from "./Box";
 
@@ -10,10 +10,11 @@ type NavbarProps = {
 
 const Navbar: FC<NavbarProps> = ({ route }) => {
   const router = useRouter();
+  const [showFullscreen, setShowFullscreen] = useState(true);
 
-  const animate = router.query.a !== undefined;
-
-  console.log(animate);
+  useEffect(() => {
+    setTimeout(() => setShowFullscreen(false));
+  });
 
   const boxes: BoxProps[] = [
     {
@@ -51,49 +52,46 @@ const Navbar: FC<NavbarProps> = ({ route }) => {
   boxes.splice(boxes.indexOf(currentRoute), 1);
 
   return (
-    <motion.nav className="hidden lg:flex">
-      <motion.div
-        className={`bg-${currentRoute.color} p-4 flex items-center justify-center z-10`}
-        variants={variants}
-        initial={animate ? "full" : "box"}
-        animate={animate ? "box" : undefined}
-        transition={{
-          duration: 1,
-        }}
-      >
-        <motion.p
-          className="text-gray-900 select-none"
-          style={{ fontSize: animate ? "60px" : "24px" }}
-          animate={
-            animate
-              ? {
-                  fontSize: "24px",
-                }
-              : undefined
-          }
-          transition={{ duration: 1 }}
-        >
-          {currentRoute.title}
-        </motion.p>
-      </motion.div>
-      {boxes.map((boxProps, i) => (
+    <motion.nav className="hidden lg:flex" layout="size">
+      {showFullscreen ? (
         <motion.div
-          className={`bg-white-900 hover:bg-${boxProps.color} p-4 flex absolute items-center justify-center mt-4 ml-8 rounded-2xl`}
-          key={i}
-          whileTap={{ scale: 0.9 }}
-          onTap={() => router.push(boxProps.href + "?b", boxProps.href)}
-          style={{
-            marginLeft: `calc(2rem + 10% + 1% + ${i} * 11%)`,
-            width: "10%",
-            minHeight: "5vh",
-          }}
+          className={`w-full flex items-center justify-center min-h-screen bg-${currentRoute.color} z-10`}
+          style={{ fontSize: "60px" }}
+          layoutId="current"
         >
-          <p
-            style={{ fontSize: "24px", lineHeight: 1 }}
+          <motion.p layout layoutId="currentText">
+            {currentRoute.title}
+          </motion.p>
+        </motion.div>
+      ) : (
+        <motion.div
+          className={`bg-${currentRoute.color} p-4 flex items-center justify-center mt-4 ml-8 rounded-2xl`}
+          whileTap={{ scale: 0.9 }}
+          layoutId="current"
+        >
+          <motion.p
+            layout
+            layoutId="currentText"
+            style={{ fontSize: "24px" }}
             className="select-none"
           >
+            {currentRoute.title}
+          </motion.p>
+        </motion.div>
+      )}
+      {boxes.map((boxProps, i) => (
+        <motion.div
+          className={`bg-white-900 hover:bg-${boxProps.color} p-4 flex items-center justify-center mt-4 rounded-2xl`}
+          key={i}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1}}
+          whileTap={{ scale: 0.9 }}
+          onTap={() => router.push(boxProps.href + "?b", boxProps.href)}
+        >
+          <motion.p layout style={{ fontSize: "24px" }} className="select-none">
             {boxProps.title}
-          </p>
+          </motion.p>
         </motion.div>
       ))}
     </motion.nav>
