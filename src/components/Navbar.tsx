@@ -80,19 +80,22 @@ const Navbar: FC<NavbarProps> = ({ route }) => {
         </motion.div>
       )}
       {boxes.map((boxProps, i) => (
-        <motion.div
-          className={`bg-white-900 hover:bg-${boxProps.color} p-4 flex items-center justify-center mt-4 rounded-2xl`}
+        <motion.button
+          className={`bg-white-900 p-4 flex items-center justify-center mt-4 rounded-2xl`}
           key={i}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1}}
+          animate={{ opacity: 1, transition: { delay: 0.5 } }}
+          whileHover={{
+            backgroundColor: "lightgray",
+            transition: { ease: "easeOut", duration: 2 },
+          }}
           whileTap={{ scale: 0.9 }}
           onTap={() => router.push(boxProps.href + "?b", boxProps.href)}
         >
           <motion.p layout style={{ fontSize: "24px" }} className="select-none">
             {boxProps.title}
           </motion.p>
-        </motion.div>
+        </motion.button>
       ))}
     </motion.nav>
   );
