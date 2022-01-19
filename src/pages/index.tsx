@@ -1,59 +1,17 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { motion } from "framer-motion";
 
-import styles from "../styles/Home.module.css";
-import Box from "../components/Box";
-import { BoxProps } from "../types/Box";
-import { useRouter } from "next/router";
+import { FC } from "react";
 
 const Home: NextPage = () => {
   // TODO: dynamic title (Nander | ~/home etc.)
 
-  const router = useRouter();
-
-  const animate = router.query.b !== undefined;
-
-  console.log(animate);
-
-  const boxes: BoxProps[] = [
-    {
-      title: "About",
-      color: "blue",
-      href: "/about",
-    },
-    /*{
-      title: "Projects",
-      color: "green",
-      href: "/projects",
-    },*/
-    {
-      title: "Blog",
-      color: "red",
-      href: "/blog",
-    },
-  ];
-
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
+  const Section: FC<{ title: string }> = ({ children, title }) => (
+    <section className="p-4 shadow-xl rounded-2xl">
+      <h2 className="font-bold text-4xl mb-1">{title}</h2>
+      <p className="text-lg">{children}</p>
+    </section>
+  );
 
   return (
     <div>
@@ -63,24 +21,36 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-4 md:mx-16 mt-4 md:mt-32">
-        <h1 className="font-bold text-8xl">Nander</h1>
-
-        {/* with grid: className="grid gap-4 grid-cols-2 mt-4" */}
-        <motion.div
-          className="grid gap-24 grid-rows-2 mt-4"
-          variants={container}
-          initial={animate ? "visible" : "hidden"}
-          animate={animate ? undefined : "visible"}
-        >
-          {/*<motion.div variants={item} key={i}>            </motion.div>*/}
-
-          {boxes.map((box, i) => (
-            <motion.div variants={item} key={i}>
-              <Box color={box.color} title={box.title} href={box.href}></Box>
-            </motion.div>
-          ))}
-        </motion.div>
+      <main className="mx-12 mt-16 md:mt-32">
+        <h1 className="font-bold text-8xl text-center md:text-left">Nander</h1>
+        <div className="flex flex-wrap flex-col gap-4 max-w-prose">
+          <div>
+            <Section title="About me">
+              I am a young fullstack web-developer currently practicing UI/UX.
+              Living in Germany. Interested in Svelte, Rust and Cryptography.
+              You can find me on{" "}
+              <a
+                href="https://discord.com/users/329630845805789186"
+                className="underline decoration-blue decoration-4"
+                title="Nander#0001"
+              >
+                Discord
+              </a>
+              .
+            </Section>
+          </div>
+          <Section title="Projects">
+            Here is a selection of some of my projects I like. You can find all
+            my projects on my{" "}
+            <a
+              href="https://github.com/nanderLP"
+              className="underline decoration-blue decoration-4"
+              title="@nanderLP"
+            >
+              GitHub
+            </a>
+          </Section>
+        </div>
       </main>
     </div>
   );
