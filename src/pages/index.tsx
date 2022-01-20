@@ -1,17 +1,36 @@
+import { motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
 
 import { FC } from "react";
+import Box from "../components/Box";
+import Section from "../components/Box";
+import Button from "../components/Button";
 
 const Home: NextPage = () => {
   // TODO: dynamic title (Nander | ~/home etc.)
 
-  const Section: FC<{ title: string }> = ({ children, title }) => (
-    <section className="p-4 shadow-xl rounded-2xl">
-      <h2 className="font-bold text-4xl mb-1">{title}</h2>
-      <p className="text-lg">{children}</p>
-    </section>
-  );
+  const projects = [
+    {
+      title: "homepage",
+      description:
+        "My homepage, the thing you are looking at right now. It's built with Next.js, Tailwind and Framer Motion.",
+      repository: "nander.dev",
+      url: undefined,
+    },
+    {
+      title: "canary",
+      description:
+        "A little project that experiments with the latest Chrome Canary features, built with SvelteKit. I will update it occasionally.",
+      repository: "canary",
+      url: "https://lab.nander.dev",
+    },
+    {
+      title: "more coming soon...",
+      description:
+        "I really like starting things and then losing motivation or finding something else. Even though my profile is kind of empty right now, I have lots of private projects that I will finish eventually.",
+    },
+  ];
 
   return (
     <div>
@@ -21,11 +40,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-12 mt-16 md:mt-32">
-        <h1 className="font-bold text-8xl text-center md:text-left">Nander</h1>
-        <div className="flex flex-wrap flex-col gap-4 max-w-prose">
-          <div>
-            <Section title="About me">
+      <main className="mx-12 mt-16 md:mt-32 flex flex-col items-center md:items-start text-center xs:text-left md:prose-h2:text-left">
+        <h1 className="font-bold text-6xl sm:text-8xl mb-4 text-center md:text-left">
+          Nander
+        </h1>
+        <div className="flex flex-wrap flex-col gap-4 max-w-lg">
+          <section className="prose dark:prose-invert prose-headings:mb-1">
+            <h2 className="text-4xl font-bold">About me</h2>
+            <p>
               I am a young fullstack web-developer currently practicing UI/UX.
               Living in Germany. Interested in Svelte, Rust and Cryptography.
               You can find me on{" "}
@@ -35,21 +57,43 @@ const Home: NextPage = () => {
                 title="Nander#0001"
               >
                 Discord
+              </a>{" "}
+              or you can message me via{" "}
+              <a
+                href="mailto:nander@nander.dev"
+                title="nander@nander.dev"
+                className="underline decoration-blue decoration-4"
+              >
+                Email
               </a>
               .
-            </Section>
-          </div>
-          <Section title="Projects">
-            Here is a selection of some of my projects I like. You can find all
-            my projects on my{" "}
-            <a
-              href="https://github.com/nanderLP"
-              className="underline decoration-blue decoration-4"
-              title="@nanderLP"
-            >
-              GitHub
-            </a>
-          </Section>
+            </p>
+          </section>
+          <section className="flex flex-col mt-8 gap-4">
+            <div className="prose dark:prose-invert prose-headings:mb-1">
+              <h2 className="text-4xl font-bold">Projects</h2>
+              <p>
+                Here is a selection of some of my projects I like. You can find
+                all my projects on my{" "}
+                <a
+                  href="https://github.com/nanderLP"
+                  className="underline decoration-blue decoration-4"
+                  title="@nanderLP"
+                >
+                  GitHub
+                </a>
+                .
+              </p>
+            </div>
+            {projects.map(({ title, description, repository, url }, i) => {
+              return (
+                <Box title={title} key={i}>
+                  <p>{description}</p>
+                  <div className="self-end"><Button>View on GitHub</Button></div>
+                </Box>
+              );
+            })}
+          </section>
         </div>
       </main>
     </div>

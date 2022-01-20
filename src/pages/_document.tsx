@@ -18,6 +18,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="description" content="Homepage of Nander" />
+          <meta name="color-scheme" content="light dark"/>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
           <link

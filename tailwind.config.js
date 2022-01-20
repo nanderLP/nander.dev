@@ -1,5 +1,8 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.{ts,tsx}"],
+  darkMode: "media",
   theme: {
     extend: {
       colors: {
@@ -9,6 +12,10 @@ module.exports = {
         yellow: "#fef4ca",
         red: "#fabec0",
       },
+    },
+    screens: {
+      xs: "475px",
+      ...defaultTheme.screens,
     },
     fontFamily: {
       sans: ["Inter", "sans-serif"],
@@ -24,5 +31,5 @@ module.exports = {
     },
   },
   safelist: ["bg-green", "bg-blue", "bg-purple", "bg-yellow", "bg-red"],
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
