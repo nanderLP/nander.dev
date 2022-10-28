@@ -1,0 +1,66 @@
+/* define Satoshi font */
+@font-face {
+  font-family: Satoshi;
+  src: local("Satoshi"), url("/fonts/Satoshi.woff2") format("woff2");
+}
+
+:root {
+  /* font information */
+  --font-title: Satoshi, sans-serif;
+  --font-body: Roboto, sans-serif;
+
+  /* colors */
+
+  /* light */
+  --primary: #785462;
+  --on-primary: #ffffff;
+  --primary-container: #ffd9e5;
+  --on-primary-container: #2d131f;
+
+  --secondary: #675b5f;
+  --on-secondary: #ffffff;
+  --secondary-container: #efdee2;
+  --on-secondary-container: #22191c;
+
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #410002;
+
+  --background: #fffbff;
+  --on-background: #1d1b1b;
+  --surface: #fffbff;
+  --on-surface: #1d1b1b;
+  --surface-variant: #eae0e2;
+  --on-surface-variant: #4b4547;
+  --outline: #7d7577;
+}
+
+/* dark */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* modify colors */
+    --primary: #e7bbca;
+    --on-primary: #452734;
+    --primary-container: #5e3d4a;
+    --on-primary-container: #ffd9e5;
+
+    --secondary: #d2c3c7;
+    --on-secondary: #382e31;
+    --secondary-container: #4f4447;
+    --on-secondary-container: #efdee2;
+
+    --error: #ffb4ab;
+    --on-error: #690005;
+    --error-container: #93000a;
+    --on-error-container: #ffb4ab;
+
+    --background: #1d1b1b;
+    --on-background: #e8e1e1;
+    --surface: #1d1b1b;
+    --on-surface: #e8e1e1;
+    --surface-variant: #4b4547;
+    --on-surface-variant: #cdc4c6;
+    --outline: #978f90;
+  }
+}
