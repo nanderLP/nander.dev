@@ -1,7 +1,24 @@
 /* define Satoshi font */
 @font-face {
   font-family: Satoshi;
-  src: local("Satoshi"), url("/fonts/Satoshi.woff2") format("woff2");
+  src: url("/fonts/Satoshi/Satoshi-Variable.woff2") format("woff2"),
+    url("/fonts/Satoshi/Satoshi-Variable.woff") format("woff"),
+    url("/fonts/Satoshi/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* define Roboto font */
+@font-face {
+  font-family: Roboto;
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  src: url("/fonts/Roboto/Roboto-Flex.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
 :root {
@@ -34,6 +51,12 @@
   --surface-variant: #eae0e2;
   --on-surface-variant: #4b4547;
   --outline: #7d7577;
+
+  --surface-1: #f8f2f7;
+  --surface-2: #f5eef3;
+  --surface-3: #f0e8ee;
+  --surface-4: #eee6ec;
+  --surface-5: #ece4e9;
 }
 
 /* dark */
@@ -62,5 +85,11 @@
     --surface-variant: #4b4547;
     --on-surface-variant: #cdc4c6;
     --outline: #978f90;
+
+    --surface-1: #282324;
+    --surface-2: #2d2829;
+    --surface-3: #332d2e;
+    --surface-4: #352e30;
+    --surface-5: #393133;
   }
 }
