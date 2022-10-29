@@ -21,10 +21,23 @@
     U+FEFF, U+FFFD;
 }
 
+/* define Icon font */
+@font-face {
+  font-family: "Material Symbols";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url("/fonts/Icons/Material-Symbols.woff2") format("woff2");
+}
+
 :root {
   /* font information */
   --font-title: Satoshi, sans-serif;
   --font-body: Roboto, sans-serif;
+  --font-icon: "Material Symbols";
+
+  /* sizes */
+  --prose: 65ch;
+  --max-width: 60rem;
 
   /* colors */
 

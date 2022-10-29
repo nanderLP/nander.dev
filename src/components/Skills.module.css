@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen, (max-width: 640px) {
+    .content {
+        flex-direction: column;
+    }
+}
+
+.icon {
+  font-size: 36px !important;
+}

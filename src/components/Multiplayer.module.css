@@ -1,0 +1,16 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+}
+
+.container {
+  border-radius: 12px;
+  padding: .5rem 1rem;
+  background-color: var(--surface-2);
+}
+/* body needs to hide overflow */
+:global body {
+  overflow-x: hidden;
+}
