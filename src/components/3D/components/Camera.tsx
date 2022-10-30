@@ -3,7 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useAtom } from "jotai";
 import { FC, useEffect, useState } from "react";
 import { Euler, Vector3 } from "three";
-import { degToRad } from "three/src/math/MathUtils";
+import { damp, degToRad } from "three/src/math/MathUtils";
 import { debugAtom, motionAtom, touchAtom } from "../../../lib/state/3D";
 
 const Camera: FC = () => {
@@ -23,8 +23,8 @@ const Camera: FC = () => {
     // disable "mouse" if touch or motion input was detected
     // touch input destroys this effect, motion will conflict
     if (!touch && !motion) {
-      camera.rotation.x = mouse.y * 0.1;
-      camera.rotation.y = mouse.x * -0.1;
+      camera.rotation.x = damp(camera.rotation.x, mouse.y * 0.1, 0.1, 0.1);
+      camera.rotation.y = damp(camera.rotation.y, mouse.x * -0.1, 0.1, 0.1);
     } else if (motion && deviceRotation) {
       camera.rotation.x = camera.rotation.x + deviceRotation.x * 0.005;
       camera.rotation.y = camera.rotation.y + deviceRotation.z * 0.00005;
