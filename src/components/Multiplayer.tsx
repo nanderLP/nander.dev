@@ -118,6 +118,7 @@ export function Cursor({ point }: { point: number[] }) {
  */
 const Multiplayer: FC = () => {
   const ws = useRef<WebSocket>();
+  const [connected, setConnected] = useState(false);
   const cursorSent = useRef(0);
   const [multiplayerCursors, setMultiplayerCursors] = useState<{
     [id: string]: number[];
@@ -178,8 +179,11 @@ const Multiplayer: FC = () => {
       }
     };
 
-    ws.current.onopen = () => {};
+    ws.current.onopen = () => {
+      setConnected(true);
+    };
     ws.current.onclose = () => {
+      setConnected(false);
       setMultiplayerCursors({});
     };
 
@@ -190,6 +194,7 @@ const Multiplayer: FC = () => {
 
   // read cursor position
   useEffect(() => {
+    if(!connected) return;
     const handleMouseMove = (e: MouseEvent) => {
       // only send position every 100ms
       if (Date.now() - cursorSent.current < 80) return;
@@ -209,7 +214,7 @@ const Multiplayer: FC = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [connected]);
 
   return (
     <>

@@ -1,5 +1,6 @@
 import styles from "./Skills.module.css";
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
+import { animate } from "motion";
 
 type Skill = {
   id: string;
@@ -26,6 +27,16 @@ const skills: Skill[] = [
 const Skills: FC = () => {
   const [project, setProject] = useState<Skill["name"]>("info");
 
+  let weight = 200
+
+  const animateWeight = () => {
+    console.log("hi");
+    
+    animate((p) => {
+      weight = p * 1000;
+    }, {duration: 1});
+  };
+
   return (
     <div className={styles.content}>
       <div>
@@ -35,6 +46,9 @@ const Skills: FC = () => {
           </div>
         ))}
       </div>
+      <h1 onClick={animateWeight} style={{ fontWeight: weight.current }}>
+        Hallooo
+      </h1>
       <div id="skills-information"></div>
     </div>
   );
