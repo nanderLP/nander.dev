@@ -6,6 +6,7 @@ import { h32 } from "xxhashjs";
 export default defineConfig({
   build: {
     target: "es2020",
+    sourcemap: true,
   },
   plugins: [react()],
   css: {
