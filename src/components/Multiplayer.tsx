@@ -40,8 +40,6 @@ type Message = {
 export function Cursor({ point }: { point: number[] }) {
   const rCursor = useRef<SVGSVGElement>(null);
 
-  console.log(point);
-
   const animateCursor = useCallback((point: number[]) => {
     const elm = rCursor.current;
     if (!elm) return;
@@ -131,7 +129,6 @@ const Multiplayer: FC = () => {
     // event needs to be handled right after the initialization because the init message is sent right away
     ws.current.onmessage = (e) => {
       const data = JSON.parse(e.data) as Message;
-      console.log(data);
 
       const id = data.id;
 
@@ -194,7 +191,7 @@ const Multiplayer: FC = () => {
 
   // read cursor position
   useEffect(() => {
-    if(!connected) return;
+    if (!connected) return;
     const handleMouseMove = (e: MouseEvent) => {
       // only send position every 100ms
       if (Date.now() - cursorSent.current < 80) return;

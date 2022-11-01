@@ -20,10 +20,6 @@ const Camera: FC = () => {
   const [introAnimation, setIntroAnimation] = useState(false);
   const [deviceRotation, setDeviceRotation] = useState<Euler | null>(null);
 
-  useEffect(() => {
-    console.log(viewport);
-  }, [viewport]);
-
   // for mouse
   useFrame(() => {
     if (!ready) {

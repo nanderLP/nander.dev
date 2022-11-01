@@ -7,10 +7,15 @@ import { animate } from "motion";
  */
 const c = (className: string) => `.${className}`;
 
-const introAnimation = () => animate(c(styles.container), {
-    //paddingTop: "10vh"
-}, {
-    duration: 1
-});
+const introAnimation = () =>
+  animate(
+    c(styles.container),
+    {
+      //paddingTop: "10vh"
+    },
+    {
+      duration: 1,
+    }
+  );
 
-export {introAnimation};
+export { introAnimation };

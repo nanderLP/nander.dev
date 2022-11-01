@@ -7,7 +7,7 @@
 
 .container {
   border-radius: 12px;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: var(--surface-2);
 }
 /* body needs to hide overflow */

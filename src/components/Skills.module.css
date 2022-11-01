@@ -4,9 +4,9 @@
 }
 
 @media screen, (max-width: 640px) {
-    .content {
-        flex-direction: column;
-    }
+  .content {
+    flex-direction: column;
+  }
 }
 
 .icon {

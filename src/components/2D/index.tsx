@@ -13,8 +13,6 @@ const Interface: FC = () => {
   const [_, setReady] = useAtom(readyAtom);
 
   useEffect(() => {
-    console.log(progress, loaded, total);
-
     // stuff is actually done loading
     if (!active && progress === 100 && loaded === total) {
       console.log("READY");
