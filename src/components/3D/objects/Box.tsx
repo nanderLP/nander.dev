@@ -1,4 +1,4 @@
-import { ThreeElements, useFrame } from "@react-three/fiber";
+import { ThreeElements } from "@react-three/fiber";
 import { useRef, useState } from "react";
 
 const Box = (props: ThreeElements["mesh"]) => {

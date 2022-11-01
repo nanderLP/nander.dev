@@ -1,13 +1,10 @@
-import styles from "./Environment.module.css";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { FC, useEffect, useRef } from "react";
+import { FC, lazy } from "react";
 import Box from "./objects/Box";
-import { useProgress, FirstPersonControls, Scroll } from "@react-three/drei";
-import { useAtom } from "jotai";
-import { readyAtom } from "../../lib/state/3D";
+import { Scroll } from "@react-three/drei";
 import Camera from "./components/Camera";
-import { Model } from "./models/Octicon";
 import { degToRad } from "three/src/math/MathUtils";
+
+const Model = lazy(() => import("./models/Octicon"));
 
 const Environment: FC = () => {
   return (

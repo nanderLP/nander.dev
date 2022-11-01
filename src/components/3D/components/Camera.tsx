@@ -1,8 +1,7 @@
-import { OrthographicCamera, PerspectiveCamera } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useAtom } from "jotai";
 import { FC, useEffect, useState } from "react";
-import { Euler, Vector3 } from "three";
+import { Euler } from "three";
 import { damp, degToRad } from "three/src/math/MathUtils";
 import {
   debugAtom,

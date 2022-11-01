@@ -17,7 +17,7 @@ type GLTFResult = GLTF & {
   };
 };
 
-export function Model(props: JSX.IntrinsicElements["group"]) {
+const Model = (props: JSX.IntrinsicElements["group"]) => {
   const ref = useRef<THREE.Mesh>(null!);
 
   const { nodes, materials } = useGLTF(
@@ -42,6 +42,8 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       </mesh>
     </group>
   );
-}
+};
 
 useGLTF.preload("/models/octicon.gltf");
+
+export default Model;

@@ -1,11 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import unocss from "unocss/vite";
 import { h32 } from "xxhashjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), unocss()],
+  build: {
+    target: "es2020",
+  },
+  plugins: [react()],
   css: {
     modules: {
       generateScopedName: (name: string, filepath: string, css) => {
@@ -16,7 +18,7 @@ export default defineConfig({
 
         return `${filename}-${key}`;
       },
-      localsConvention: "camelCase"
+      localsConvention: "camelCase",
     },
   },
 });

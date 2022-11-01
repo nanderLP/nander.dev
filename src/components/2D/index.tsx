@@ -1,40 +1,42 @@
 import styles from "./styles/Interface.module.css";
 import { FC, useEffect, useState } from "react";
 import { useAtom } from "jotai";
-import { motionAtom, mouseAtom, readyAtom } from "../../lib/state/3D";
+import { motionAtom, readyAtom } from "../../lib/state/3D";
 import { animate } from "motion";
 import Debug from "./components/Debug";
-import { introAnimation } from "../../lib/animations";
 import { Scroll, useProgress } from "@react-three/drei";
 
 const Interface: FC = () => {
-  const [motion] = useAtom(motionAtom);
   const [fontWeight, setWeight] = useState(300);
 
-  const { active, progress, errors, item, loaded, total } = useProgress();
-  const [ready, setReady] = useAtom(readyAtom);
+  const { active, progress, loaded, total } = useProgress();
+  const [_, setReady] = useAtom(readyAtom);
 
   useEffect(() => {
-    if (loaded === total) {
-      setTimeout(() => {
-        // animate fontWeight to 900
-        animate(
-          (p) => {
-            setWeight(300 + p * 600);
-          },
-          {
-            duration: 1,
-          }
-        ).finished.then(() => setReady(true));
-      }, 1000);
+    console.log(progress, loaded, total);
+
+    // stuff is actually done loading
+    if (!active && progress === 100 && loaded === total) {
+      console.log("READY");
+
+      // animate fontWeight to 900
+      animate(
+        (p) => {
+          setWeight(300 + p * 600);
+        },
+        {
+          duration: 1,
+        }
+      ).finished.then(() => setReady(true));
     }
-  }, [loaded, total, setReady]);
+  }, [active, progress, loaded, total]);
 
   return (
-    <Scroll html className={styles.container}>
-      <h1 style={{ fontWeight }}>Nander</h1>
-      <Debug />
-      <p>Motion: {motion !== null ? motion.toString() : "waiting..."}</p>
+    <Scroll html>
+      <div className={styles.container}>
+        <h1 style={{ fontWeight }}>Nander</h1>
+        <Debug />
+      </div>
     </Scroll>
   );
 };
