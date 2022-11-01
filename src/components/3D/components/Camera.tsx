@@ -4,14 +4,21 @@ import { useAtom } from "jotai";
 import { FC, useEffect, useState } from "react";
 import { Euler, Vector3 } from "three";
 import { damp, degToRad } from "three/src/math/MathUtils";
-import { debugAtom, motionAtom, touchAtom } from "../../../lib/state/3D";
+import {
+  debugAtom,
+  motionAtom,
+  readyAtom,
+  touchAtom,
+} from "../../../lib/state/3D";
 
 const Camera: FC = () => {
   const { camera, mouse, viewport } = useThree();
+  const [ready] = useAtom(readyAtom);
   const [touch, setTouch] = useAtom(touchAtom);
   const [motion, setMotion] = useAtom(motionAtom);
   const [_, setDebug] = useAtom(debugAtom);
 
+  const [introAnimation, setIntroAnimation] = useState(false);
   const [deviceRotation, setDeviceRotation] = useState<Euler | null>(null);
 
   useEffect(() => {
@@ -20,14 +27,26 @@ const Camera: FC = () => {
 
   // for mouse
   useFrame(() => {
-    // disable "mouse" if touch or motion input was detected
-    // touch input destroys this effect, motion will conflict
-    if (!touch && !motion) {
-      camera.rotation.x = damp(camera.rotation.x, mouse.y * 0.1, 0.1, 0.1);
-      camera.rotation.y = damp(camera.rotation.y, mouse.x * -0.1, 0.1, 0.1);
-    } else if (motion && deviceRotation) {
-      camera.rotation.x = camera.rotation.x + deviceRotation.x * 0.005;
-      camera.rotation.y = camera.rotation.y + deviceRotation.z * 0.00005;
+    if (!ready) {
+      // set camera to high position
+      camera.position.y = 25;
+    } else {
+      if (!introAnimation) {
+        // damp camera down
+        camera.position.y = damp(camera.position.y, 0, 2, 0.01);
+        if (camera.position.y < 0.1) {
+          setIntroAnimation(true);
+        }
+      }
+      if (!touch && !motion) {
+        // disable "mouse" if touch or motion input was detected
+        // touch input destroys this effect, motion will conflict
+        camera.rotation.x = damp(camera.rotation.x, mouse.y * 0.1, 0.1, 0.1);
+        camera.rotation.y = damp(camera.rotation.y, mouse.x * -0.1, 0.1, 0.1);
+      } else if (motion && deviceRotation) {
+        camera.rotation.x = camera.rotation.x + deviceRotation.x * 0.005;
+        camera.rotation.y = camera.rotation.y + deviceRotation.z * 0.00005;
+      }
     }
   });
 

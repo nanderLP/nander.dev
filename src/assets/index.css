@@ -21,6 +21,21 @@
   }
 }
 
+/* scrollbar styling */
+/* select div next to canvas as this is the overflowing element */
+canvas ~ div::-webkit-scrollbar {
+  width: 4px; /* width of the entire scrollbar */
+}
+
+canvas ~ div::-webkit-scrollbar-track {
+  background: black; /* color of the tracking area */
+}
+
+canvas ~ div::-webkit-scrollbar-thumb {
+  background-color: var(--surface-variant); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
+
 /* layout standards */
 
 body,
@@ -40,7 +55,7 @@ html {
 main {
   width: 100%;
   height: 100%;
-  background-color: var(--background);
+  background-color: black;
 }
 
 /* icon support */

@@ -10,24 +10,12 @@ import { Model } from "./models/Octicon";
 import { degToRad } from "three/src/math/MathUtils";
 
 const Environment: FC = () => {
-  const { active, progress, errors, item, loaded, total } = useProgress();
-  const [ready, setReady] = useAtom(readyAtom);
-
-  useEffect(() => {
-    if (loaded === total) {
-      setTimeout(() => setReady(true), 1000);
-    }
-  }, [loaded, total, setReady]);
-
   return (
     <Scroll>
       <Camera />
-      <ambientLight/>
+      <ambientLight />
       <Box position={[3, -6, -5]}></Box>
-      <Model
-        position={[-15, 5, -15]}
-        rotation={[degToRad(90), 0, 0]}
-      ></Model>
+      <Model position={[-15, 5, -15]} rotation={[degToRad(90), 0, 0]}></Model>
     </Scroll>
   );
 };
