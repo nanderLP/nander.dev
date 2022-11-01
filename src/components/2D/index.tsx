@@ -1,6 +1,6 @@
 import styles from "./styles/Interface.module.css";
 import { FC, useEffect, useState } from "react";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { motionAtom, readyAtom } from "../../lib/state/3D";
 import { animate } from "motion";
 import Debug from "./components/Debug";

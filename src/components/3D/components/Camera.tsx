@@ -1,5 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { FC, useEffect, useState } from "react";
 import { Euler } from "three";
 import { damp, degToRad } from "three/src/math/MathUtils";
@@ -12,9 +12,9 @@ import {
 
 const Camera: FC = () => {
   const { camera, mouse, viewport } = useThree();
-  const [ready] = useAtom(readyAtom);
   const [touch, setTouch] = useAtom(touchAtom);
   const [motion, setMotion] = useAtom(motionAtom);
+  const ready = useAtomValue(readyAtom);
   const [_, setDebug] = useAtom(debugAtom);
 
   const [introAnimation, setIntroAnimation] = useState(false);

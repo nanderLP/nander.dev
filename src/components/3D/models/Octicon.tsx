@@ -21,10 +21,10 @@ const Model = (props: JSX.IntrinsicElements["group"]) => {
   const ref = useRef<THREE.Mesh>(null!);
 
   const { nodes, materials } = useGLTF(
-    "/models/octicon.gltf"
+    "/models/octicon.glb"
   ) as unknown as GLTFResult;
 
-  useFrame((state, delta) => {
+  useFrame((_state, _delta) => {
     ref.current.rotation.x += 0.001;
     ref.current.rotation.y += 0.001;
     ref.current.rotation.z += 0.001;
@@ -44,6 +44,6 @@ const Model = (props: JSX.IntrinsicElements["group"]) => {
   );
 };
 
-useGLTF.preload("/models/octicon.gltf");
+useGLTF.preload("/models/octicon.glb");
 
 export default Model;

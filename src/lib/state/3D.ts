@@ -33,9 +33,4 @@ const motionAtom = atom<boolean | null>(null);
  */
 const debugAtom = atom<{ [key: string]: any }>({});
 
-/**
- * stores scroll progress
- */
-const scrollAtom = atom(0);
-
 export { readyAtom, mouseAtom, motionAtom, touchAtom, debugAtom };

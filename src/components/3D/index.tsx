@@ -12,7 +12,7 @@ const Environment: FC = () => {
       <Camera />
       <ambientLight />
       <Box position={[3, -6, -5]}></Box>
-      <Model position={[-15, 5, -15]} rotation={[degToRad(90), 0, 0]}></Model>
+      <Model position={[-15, -5, -15]} rotation={[degToRad(90), 0, 0]}></Model>
     </Scroll>
   );
 };
