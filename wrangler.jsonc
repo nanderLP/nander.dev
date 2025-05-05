@@ -1,10 +1,22 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "nander-dev",
-	"main": ".svelte-kit/cloudflare/_worker.js",
-	"compatibility_date": "2025-05-05",
-	"assets": {
-		"binding": "ASSETS",
-		"directory": ".svelte-kit/cloudflare"
-	}
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nander-dev",
+  "main": ".svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-05-05",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".svelte-kit/cloudflare"
+  },
+  "d1_databases": [
+    {
+      "binding": "DATABASE",
+      "database_id": "nander-dev"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "nander-dev"
+    }
+  ]
 }

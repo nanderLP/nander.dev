@@ -4,7 +4,8 @@ import { error, json } from "@sveltejs/kit";
 import { Effect, Layer, pipe } from "effect";
 import type { RequestHandler } from "./$types";
 
-const appLayer = Layer.merge(SpotifyLive, RedisLive);
+const appLayer = (env: Cloudflare.Env) =>
+	Layer.merge(SpotifyLive(env), RedisLive(env));
 
 const getHandler = pipe(
 	Spotify,
@@ -17,8 +18,11 @@ const getHandler = pipe(
 	),
 );
 
-export const GET: RequestHandler = (req) =>
-	Effect.runPromise(Effect.provide(getHandler, appLayer));
+export const GET: RequestHandler = ({ platform }) =>
+	Effect.runPromise(
+		// biome-ignore lint/style/noNonNullAssertion: <explanation>
+		Effect.provide(getHandler, appLayer(platform!.env!)),
+	);
 
 // copy paste this in your terminal if you want to get the access token
 // make sure to replace the client id and redirect uri with your own

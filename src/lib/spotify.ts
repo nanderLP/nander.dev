@@ -90,14 +90,15 @@ const refreshAccessToken = Effect.gen(function* () {
 	);
 	if (parsedRes.refresh_token && parsedRes.refresh_token !== refreshToken) {
 		yield* Effect.tryPromise({
-			try: () => client.set("spotify:refresh_token", parsedRes.refresh_token),
+			// biome-ignore lint/style/noNonNullAssertion:
+			try: () => client.put("spotify:refresh_token", parsedRes.refresh_token!),
 			catch: (e) => e,
 		});
 	}
 	yield* Effect.tryPromise({
 		try: () =>
-			client.set("spotify_access_token", parsedRes.access_token, {
-				ex: parsedRes.expires_in,
+			client.put("spotify:access_token", parsedRes.access_token, {
+				expirationTtl: parsedRes.expires_in,
 			}),
 		catch: (e) => e,
 	});
@@ -108,7 +109,7 @@ const refreshAccessToken = Effect.gen(function* () {
 const getAccessToken = Effect.gen(function* () {
 	const { client } = yield* Redis;
 	const accessToken = yield* Effect.tryPromise({
-		try: () => client.get<string>("spotify_access_token"),
+		try: () => client.get<string>("spotify:access_token"),
 		catch: (e) => e,
 	});
 	if (!accessToken) {
@@ -183,11 +184,12 @@ const getPlaybackState: Effect.Effect<
 	Effect.mapError((e) => (e instanceof Error ? e : new Error(String(e)))),
 );
 
-const SpotifyLive = Layer.succeed(
-	Spotify,
-	Spotify.of({
-		getPlaybackState: () => Effect.provide(getPlaybackState, RedisLive),
-	}),
-);
+const SpotifyLive = (env: Env) =>
+	Layer.succeed(
+		Spotify,
+		Spotify.of({
+			getPlaybackState: () => Effect.provide(getPlaybackState, RedisLive(env)),
+		}),
+	);
 
 export { Spotify, SpotifyLive };
